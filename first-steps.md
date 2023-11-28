@@ -277,3 +277,316 @@ double distancia = 98765.4321;
 
 - Prefiera `double` para la mayoría de los cálculos para evitar problemas de precisión.
 - Utilice `float` cuando necesite ahorrar memoria y la precisión no sea la principal preocupación.
+
+# Tema 7: Precisión del Punto Flotante en Java
+
+## 7.1 Concepto de Punto Flotante
+
+El punto flotante es un método para representar números reales en programación que soporta un rango mucho más amplio que el de los números enteros. En Java, los tipos `float` (32 bits) y `double` (64 bits) se utilizan para representar estos números.
+
+## 7.2 Precisión en Punto Flotante
+
+La precisión se refiere a cuán exacta es la representación de un número. En Java, `float` proporciona una precisión de hasta 7 dígitos decimales, mientras que `double` ofrece precisión hasta 15 dígitos decimales.
+
+### 7.2.1 Precisión de `float`
+
+- 32 bits de almacenamiento.
+- Aproximadamente 7 dígitos decimales de precisión.
+- Ejemplo: `3.1415927f`.
+
+### 7.2.2 Precisión de `double`
+
+- 64 bits de almacenamiento.
+- Aproximadamente 15 dígitos decimales de precisión.
+- Ejemplo: `3.141592653589793`.
+
+## 7.3 Problemas de Precisión
+
+Debido a la manera en que los números de punto flotante se almacenan y calculan, pueden surgir problemas de precisión, especialmente en cálculos matemáticos complejos o acumulativos.
+
+### 7.3.1 Redondeo
+
+- Los números de punto flotante no pueden representar exactamente todos los números reales, y algunos números pueden ser redondeados a su representación más cercana.
+- Ejemplo: `0.1 + 0.2` puede no resultar exactamente en `0.3` debido a la representación interna de estos números.
+
+### 7.3.2 Acumulación de Errores
+
+- En cálculos con muchos pasos, los pequeños errores de redondeo pueden acumularse, llevando a resultados inesperados o imprecisos.
+
+## 7.4 Buenas Prácticas
+
+Para manejar la precisión en Java:
+
+### 7.4.1 Uso de `BigDecimal`
+
+- Para cálculos financieros o cuando se requiere alta precisión, se recomienda usar `BigDecimal`.
+- `BigDecimal` permite controlar la precisión y el redondeo, aunque a costa de una mayor complejidad y menor rendimiento en comparación con `float` y `double`.
+
+### 7.4.2 Evitar Comparaciones Directas
+
+- Evitar comparar números de punto flotante para igualdad directa (`==`).
+- En su lugar, considerar si la diferencia entre ellos está dentro de un rango aceptable.
+
+### 7.4.3 Consciencia de Rango y Precisión
+
+- Ser consciente de los límites de rango y precisión de `float` y `double`, y elegir el tipo adecuado según las necesidades del programa.
+
+## 7.5 Ejemplo Ilustrativo
+
+Un ejemplo clásico de problemas de precisión es el siguiente:
+
+```java
+double a = 0.1;
+double b = 0.2;
+double c = a + b; // Puede no ser exactamente 0.3
+```
+
+En este caso, `c` puede no ser exactamente `0.3` debido a cómo los números de punto flotante son representados en la memoria.
+
+# Tema 8: Los Tipos de Dato Primitivos Char y Boolean en Java
+
+## 8.1 Char
+
+### Descripción
+
+`char` es un tipo de dato primitivo en Java que se utiliza para almacenar un único carácter. Internamente, los caracteres en Java se representan utilizando el estándar Unicode, que permite una amplia variedad de caracteres de diferentes idiomas y símbolos especiales.
+
+### Características
+
+- Tamaño: 16 bits (2 bytes).
+- Rango: De 0 a 65,535, ya que representa caracteres Unicode sin signo.
+- Uso: Principalmente para almacenar caracteres individuales.
+
+### Ejemplo de Uso
+
+```java
+char letra = 'A';
+char numero = '1';
+char simbolo = '$';
+```
+
+### Literales Char
+
+Los literales `char` se especifican entre comillas simples. También pueden representar caracteres especiales y de escape, como '\n' (nueva línea) o '\u0041' (representación Unicode para 'A').
+
+## 8.2 Boolean
+
+### Descripción
+
+El tipo `boolean` se utiliza para almacenar valores lógicos, que pueden ser `true` o `false`. Es uno de los tipos más básicos en Java y es fundamental en el control de flujo y la lógica condicional.
+
+### Características
+
+- Tamaño: No especificado por la especificación de Java, pero generalmente representa 1 bit de información (aunque su tamaño en memoria puede ser mayor debido a cuestiones de alineación y eficiencia).
+- Valores: Solo puede tomar uno de dos valores, `true` o `false`.
+
+### Ejemplo de Uso
+
+```java
+boolean esMayorDeEdad = true;
+boolean resultado = false;
+```
+
+### Uso en Estructuras de Control
+
+`boolean` es ampliamente utilizado en estructuras de control como `if`, `while`, y `for`, así como en expresiones condicionales y operadores lógicos.
+
+```java
+if (esMayorDeEdad) {
+    // Código a ejecutar si esMayorDeEdad es true
+}
+```
+
+## 8.3 Aplicaciones y Consideraciones
+
+### Para `char`
+
+- Adecuado para trabajar con caracteres individuales.
+- Utilizado en arrays para formar cadenas (aunque en la práctica, la clase `String` se usa con más frecuencia para cadenas de texto).
+
+### Para `boolean`
+
+- Esencial en la toma de decisiones y la lógica condicional en programas.
+- No debe confundirse con los valores numéricos 0 y 1, ya que `boolean` no es numérico en Java.
+
+# Tema 9: Recapitulación de Tipos Primitivos y el Tipo de Dato String en Java
+
+## 9.1 Tipos Primitivos en Java
+
+Java ofrece varios tipos de datos primitivos, que son los bloques de construcción básicos para la manipulación de datos. Cada tipo primitivo tiene un tamaño y un rango definidos, y sirve para un propósito específico.
+
+### 9.1.1 byte
+
+- **Tamaño**: 8 bits.
+- **Rango**: -128 a 127.
+- **Uso**: Manejo eficiente de la memoria en grandes arrays de datos.
+
+### 9.1.2 short
+
+- **Tamaño**: 16 bits.
+- **Rango**: -32,768 a 32,767.
+- **Uso**: Ahorro de memoria en grandes arrays cuando `byte` es muy pequeño y `int` es más de lo necesario.
+
+### 9.1.3 int
+
+- **Tamaño**: 32 bits.
+- **Rango**: -2,147,483,648 a 2,147,483,647.
+- **Uso**: Tipo más común para números enteros.
+
+### 9.1.4 long
+
+- **Tamaño**: 64 bits.
+- **Rango**: -9,223,372,036,854,775,808 a 9,223,372,036,854,775,807.
+- **Uso**: Cuando `int` no es suficiente para manejar números grandes.
+
+### 9.1.5 float
+
+- **Tamaño**: 32 bits.
+- **Precisión**: 7 dígitos decimales.
+- **Uso**: Números de punto flotante cuando se necesitan menos decimales y menos memoria.
+
+### 9.1.6 double
+
+- **Tamaño**: 64 bits.
+- **Precisión**: 15 dígitos decimales.
+- **Uso**: Tipo predeterminado para números de punto flotante, usado en cálculos matemáticos.
+
+### 9.1.7 char
+
+- **Tamaño**: 16 bits (caracteres Unicode).
+- **Rango**: 0 a 65,535.
+- **Uso**: Almacenamiento de caracteres individuales.
+
+### 9.1.8 boolean
+
+- **Tamaño**: No definido específicamente, representa 1 bit de información.
+- **Valores**: `true` o `false`.
+- **Uso**: Control de flujo y operaciones lógicas.
+
+## 9.2 El Tipo de Dato String
+
+Aunque `String` no es un tipo primitivo, es una de las clases más utilizadas en Java y merece una mención especial.
+
+### Características
+
+- `String` representa una secuencia de caracteres y es una clase, no un tipo primitivo.
+- Las cadenas de texto se manejan como instancias de la clase `String`.
+- Los objetos `String` son inmutables, lo que significa que una vez creados, su contenido no puede cambiar.
+
+### Ejemplo de Uso
+
+```java
+String nombre = "Ana";
+String saludo = "Hola, " + nombre;
+```
+
+### Operaciones Comunes
+
+- Concatenación (`+`).
+- Comparación (`equals`, `compareTo`).
+- Búsqueda y manipulación (como `substring`, `length`, `replace`).
+
+### Importancia en Java
+
+- `String` se utiliza en casi todos los programas de Java para manejar datos de texto.
+- A menudo se utiliza en interfaces de usuario, manejo de archivos, comunicaciones en red, y para procesamiento general de texto.
+
+# Tema 10: Operadores, Operandos y Expresiones en Java
+
+## 10.1 Operadores
+
+Los operadores en Java son símbolos especiales que se utilizan para realizar operaciones sobre uno o más operandos. Java ofrece varios tipos de operadores:
+
+### 10.1.1 Operadores Aritméticos
+
+- **Uso**: Para realizar cálculos matemáticos.
+- **Ejemplos**: `+` (suma), `-` (resta), `*` (multiplicación), `/` (división), `%` (módulo).
+
+### 10.1.2 Operadores de Comparación
+
+- **Uso**: Para comparar dos valores.
+- **Ejemplos**: `==` (igual a), `!=` (diferente de), `>` (mayor que), `<` (menor que), `>=` (mayor o igual que), `<=` (menor o igual que).
+
+### 10.1.3 Operadores Lógicos
+
+- **Uso**: Para realizar operaciones lógicas (principalmente con booleanos).
+- **Ejemplos**: `&&` (AND lógico), `||` (OR lógico), `!` (NOT lógico).
+
+### 10.1.4 Operadores de Asignación
+
+- **Uso**: Para asignar valores a variables.
+- **Ejemplos**: `=` (asignación simple), `+=` (suma y asigna), `-=` (resta y asigna).
+
+### 10.1.5 Operadores Unarios
+
+- **Uso**: Operan sobre un solo operando.
+- **Ejemplos**: `++` (incremento), `--` (decremento), `-` (negación unaria).
+
+### 10.1.6 Operadores Bit a Bit
+
+- **Uso**: Operaciones a nivel de bits.
+- **Ejemplos**: `&` (AND bit a bit), `|` (OR bit a bit), `^` (XOR bit a bit), `~` (NOT bit a bit).
+
+## 10.2 Operandos
+
+Los operandos son los valores o variables sobre los que actúan los operadores. En una expresión como `a + b`, `a` y `b` son operandos.
+
+## 10.3 Expresiones
+
+Una expresión es una combinación de operadores y operandos que se evalúa para producir un resultado. Las expresiones pueden ser tan simples como un valor literal o tan complejas como una combinación de múltiples operadores y operandos.
+
+### 10.3.1 Tipos de Expresiones
+
+- **Aritméticas**: Involucran operadores aritméticos y producen un resultado numérico.
+- **Lógicas**: Utilizan operadores lógicos y producen un resultado booleano.
+- **Relacionales**: Comparan operandos y producen un resultado booleano.
+
+### 10.3.2 Ejemplos de Expresiones
+
+```java
+int resultado = a * b; // Expresión aritmética
+boolean esMayor = edad > 18; // Expresión relacional
+boolean esAdulto = esMayor && tieneDocumento; // Expresión lógica
+```
+
+### 10.3.3 Evaluación de Expresiones
+
+- La evaluación de expresiones sigue las reglas de precedencia de operadores en Java.
+- La asociatividad de operadores determina cómo se agrupan los operadores y operandos en ausencia de paréntesis.
+
+# Tema 11: Operadores de Abreviación en Java
+
+## 11.1 Definición de Operadores de Abreviación
+
+Los operadores de abreviación, también conocidos como operadores de asignación compuesta, son una forma corta de aplicar una operación a una variable y luego asignar el resultado a esa misma variable. Simplifican la escritura y la lectura del código.
+
+## 11.2 Tipos de Operadores de Abreviación
+
+### 11.2.1 Operadores Aritméticos de Abreviación
+
+- **Suma y Asignación (`+=`)**:
+  - Ejemplo: `a += b;` es equivalente a `a = a + b;`.
+- **Resta y Asignación (`-=`)**:
+  - Ejemplo: `a -= b;` es equivalente a `a = a - b;`.
+- **Multiplicación y Asignación (`*=`)**:
+  - Ejemplo: `a *= b;` es equivalente a `a = a * b;`.
+- **División y Asignación (`/=`)**:
+  - Ejemplo: `a /= b;` es equivalente a `a = a / b;`.
+- **Módulo y Asignación (`%=`)**:
+  - Ejemplo: `a %= b;` es equivalente a `a = a % b;`.
+
+## 11.3 Uso y Aplicaciones
+
+Los operadores de abreviación son muy útiles para simplificar operaciones que actualizan el valor de una variable basándose en su valor actual. Se usan frecuentemente en bucles y en operaciones matemáticas o lógicas repetitivas.
+
+## 11.4 Ejemplos Prácticos
+
+```java
+int contador = 0;
+contador += 1; // Incrementa contador en 1
+```
+
+## 11.5 Buenas Prácticas
+
+- Utilizar operadores de abreviación para mejorar la legibilidad del código y reducir la posibilidad de errores, especialmente en cálculos complejos o repetitivos.
+- Ser consciente de la precedencia de operadores al usar operadores de abreviación en expresiones complejas.
