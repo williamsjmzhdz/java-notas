@@ -244,3 +244,55 @@ Debido a su naturaleza concisa, puede ser tentador abusar del operador ternario.
 ### Evitar Anidaciones
 
 Evitar anidar operadores ternarios, ya que esto puede hacer el código difícil de leer y entender. En casos de múltiples condiciones, es mejor utilizar estructuras `if-else` o `switch`.
+
+# Tema 6: Precedencia de Operadores
+
+## 6.1.- Concepto de Precedencia de Operadores
+
+La precedencia de operadores en Java determina el orden en que se evalúan las operaciones en una expresión. Cuando una expresión contiene múltiples operadores, la precedencia define cuáles operaciones se realizan primero antes de otras.
+
+### Importancia de la Precedencia
+
+- **Evitar Ambigüedades**: La precedencia ayuda a evitar ambigüedades en expresiones complejas.
+- **Resultados Correctos**: Una comprensión adecuada de la precedencia asegura que se obtengan los resultados esperados de las operaciones.
+
+### Ejemplo
+
+```java
+int resultado = 10 + 5 * 2;
+```
+
+Aquí, `5 * 2` se evalúa antes que `10 +`, debido a la mayor precedencia del operador de multiplicación.
+
+## 6.2.- Reglas de Precedencia en Java
+
+En Java, la precedencia de operadores sigue un orden específico. Algunos de los operadores con mayor precedencia incluyen:
+
+1. **Operadores de Postfijo**: `exp++`, `exp--`
+2. **Operadores de Unario**: `++exp`, `--exp`, `+exp`, `-exp`, `~`, `!`
+3. **Operadores de Multiplicación/División**: `*`, `/`, `%`
+4. **Operadores de Suma/Resta**: `+`, `-`
+5. **Operadores de Desplazamiento**: `<<`, `>>`, `>>>`
+6. **Operadores Relacionales**: `<`, `>`, `<=`, `>=`, `instanceof`
+7. **Operadores de Igualdad**: `==`, `!=`
+8. **Operadores Bit a Bit**: `&`, `^`, `|`
+9. **Operadores Lógicos**: `&&`, `||`
+10. **Operadores Ternarios**: `? :`
+11. **Operadores de Asignación**: `=`, `+=`, `-=`, `*=`, `/=`, etc.
+
+## 6.3.- Uso de Paréntesis para Modificar la Precedencia
+
+Los paréntesis `()` se pueden utilizar para cambiar el orden de evaluación predeterminado en una expresión. La expresión dentro de los paréntesis tiene la mayor precedencia y se evalúa primero.
+
+### Ejemplo
+
+```java
+int resultado = (10 + 5) * 2;
+```
+
+En este caso, la suma `(10 + 5)` se evalúa primero debido a los paréntesis, alterando el orden de precedencia natural.
+
+### Buenas Prácticas
+
+- **Uso de Paréntesis para Claridad**: Aunque no siempre sean necesarios, los paréntesis pueden usarse para hacer el código más legible y claro, especialmente en expresiones complejas.
+- **Evitar Suposiciones**: No asumir la precedencia de operadores; en caso de duda, usar paréntesis para asegurar la evaluación deseada.
